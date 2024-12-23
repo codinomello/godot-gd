@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4faljsvlaghx"]
+
+[ext_resource type="Texture2D" uid="uid://dm440e6qrpieq" path="res://icon.svg" id="1_ajy1j"]
+[ext_resource type="Script" path="res://cenas/entidades/jogador/jogador.gd" id="1_drkaf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhye0"]
+albedo_texture = ExtResource("1_ajy1j")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l5lrd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kp4e4"]
+
+[node name="Jogador" type="CharacterBody3D"]
+script = ExtResource("1_drkaf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_yhye0")
+mesh = SubResource("CapsuleMesh_l5lrd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kp4e4")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://by1al07tgr4fl"]
+
+[ext_resource type="Texture2D" uid="uid://dm440e6qrpieq" path="res://icon.svg" id="1_jqtqf"]
+[ext_resource type="Script" path="res://mesh_instance_3d.gd" id="2_8up3h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7ni2"]
+sky_top_color = Color(0.245052, 0.832513, 0.972727, 1)
+sky_horizon_color = Color(0.616165, 0.76107, 0.797103, 1)
+ground_bottom_color = Color(0.219608, 0.211765, 0.215686, 1)
+ground_horizon_color = Color(0.616165, 0.76107, 0.797103, 1)
+
+[sub_resource type="Sky" id="Sky_bn7ko"]
+sky_material = SubResource("ProceduralSkyMaterial_i7ni2")
+
+[sub_resource type="Environment" id="Environment_n83kf"]
+background_mode = 2
+sky = SubResource("Sky_bn7ko")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0j1e"]
+albedo_texture = ExtResource("1_jqtqf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gs4ob"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_12usr"]
+material = SubResource("StandardMaterial3D_gs4ob")
+
+[node name="Nível" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n83kf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.154, 2.726)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.016)
+material_override = SubResource("StandardMaterial3D_a0j1e")
+mesh = SubResource("CapsuleMesh_12usr")
+script = ExtResource("2_8up3h")

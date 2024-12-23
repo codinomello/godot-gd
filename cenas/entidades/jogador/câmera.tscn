@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqiao58ubuqux"]
+
+[ext_resource type="Script" path="res://cenas/entidades/jogador/câmera.gd" id="1_sag4j"]
+
+[node name="Câmera" type="SpringArm3D"]
+script = ExtResource("1_sag4j")
+
+[node name="Câmera3D" type="Camera3D" parent="."]
+current = true
